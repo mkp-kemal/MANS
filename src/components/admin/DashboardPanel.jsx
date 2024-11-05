@@ -70,7 +70,7 @@ const DashboardPanel = () => {
 
     setLoading(true);
 
-    axios.get('http://localhost:5000/v1/api/all-products', {
+    axios.get('http://localhost:5000/v1/api/all-products-admin', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -285,7 +285,19 @@ const DashboardPanel = () => {
                 <Input
                   placeholder="Product Stock"
                   value={currentProduct.stock}
-                  onChange={(e) => setCurrentProduct({ ...currentProduct, stock: e.target.value.replace(/[^\d]/g, '') })}
+                  onChange={(e) => setCurrentProduct({ ...currentProduct, stock: e.target.value })}
+                  className="mb-2"
+                  type="number"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSaveEdit();
+                    }
+                  }}
+                />
+                <Input
+                  placeholder="Unit"
+                  value={currentProduct.unit}
+                  onChange={(e) => setCurrentProduct({ ...currentProduct, unit: e.target.value })}
                   className="mb-2"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
