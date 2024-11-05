@@ -136,6 +136,7 @@ const Stocks = () => {
       notification.success({
         message: 'Produk Ditambahkan',
         description: `${product.name} berhasil ditambahkan ke keranjang.`,
+        placement: 'bottomLeft',
       });
     } else {
       notification.error({
